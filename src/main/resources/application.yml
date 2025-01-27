@@ -1,0 +1,21 @@
+spring:
+  security:
+    user:
+      password: 123456
+      name: user
+
+  datasource:
+    username: root
+    password: bhr050219
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/zjut?serverTimezone=UTC
+  application:
+    name: RecyclingBook
+server:
+  port: 8080
+logging:
+  level:
+    com.baomidou.mybatisplus.samples.quickstart: debug
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
