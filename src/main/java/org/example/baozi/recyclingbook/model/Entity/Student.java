@@ -17,9 +17,6 @@ public class Student {
     @TableField("password")
     private String password;
 
-    @TableField("student_name")
-    private String name;
-
     @TableField("phone")
     private String phone;
 
@@ -36,7 +33,7 @@ public class Student {
     private Integer creditScore = 100; // 信誉分
 
     @TableField("status")
-    private Integer status = 0; // 状态 0:正常 1:限制使用
+    private boolean status = true; // 状态 0:正常 1:限制使用
 
     @TableField("is_first_login")
     private Boolean isFirstLogin = true; // 是否首次登录
