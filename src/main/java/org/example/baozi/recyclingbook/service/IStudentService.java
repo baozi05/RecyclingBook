@@ -1,6 +1,7 @@
 package org.example.baozi.recyclingbook.service;
 
 import com.baomidou.mybatisplus.extension.service.IService;
+import org.example.baozi.recyclingbook.model.DTO.StudentInfoDTO;
 import org.example.baozi.recyclingbook.model.DTO.StudentLoginDTO;
 import org.example.baozi.recyclingbook.model.Entity.Student;
 
@@ -12,12 +13,11 @@ public interface IStudentService extends IService<Student> {
     void studentLogin(String studentId);
 
     /**
-     * 学生首次登录修改密码
-     * @param studentId
-     * @param newPassword
+     * 学生首次登录修改信息
+     * @param studentInfoDTO
      * @return
      */
-    boolean updateInitialPassword(String studentId, String newPassword);
+    Student updateStudentInfo(StudentInfoDTO studentInfoDTO);
 
     /**
      * 验证密码

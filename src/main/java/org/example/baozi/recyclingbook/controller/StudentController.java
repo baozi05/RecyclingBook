@@ -1,5 +1,6 @@
 package org.example.baozi.recyclingbook.controller;
 
+import org.example.baozi.recyclingbook.model.DTO.StudentInfoDTO;
 import org.example.baozi.recyclingbook.model.DTO.StudentLoginDTO;
 import org.example.baozi.recyclingbook.model.Entity.Student;
 import org.example.baozi.recyclingbook.service.StudentService;
@@ -16,6 +17,7 @@ public class StudentController {
     @Autowired
     private StudentService studentService;
 
+    // 登录
     @PostMapping("/login")
     public ResponseMessage<Student> login(@RequestBody @Valid StudentLoginDTO studentLoginDTO){
         String userid= studentLoginDTO.getStudentId();
@@ -39,6 +41,22 @@ public class StudentController {
             }
             else
                 return  ResponseMessage.info("密码错误");
+        }
+    }
+
+    // 修改个人信息--包括首次登录绑定与后续进行个人修改
+    // 同时绑定两个mapping
+    @PostMapping({"/infotied","/infomod"})
+    public ResponseMessage<Student> studentUpdate(@RequestBody @Valid StudentInfoDTO studentInfoDTO){
+        Student studentPojo=studentService.lambdaQuery().eq(Student::getStudentId, studentInfoDTO.getStudentId()).one();
+        try {
+            studentService.updateStudentInfo(studentInfoDTO);
+            if(studentPojo.getIsFirstLogin()) {
+                studentService.updateLoginStatus(studentPojo.getStudentId());
+            }
+            return ResponseMessage.success();
+        }catch (RuntimeException e){
+            return ResponseMessage.error("两次密码不一致");
         }
     }
 }

@@ -13,6 +13,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/student/login").permitAll()  // 允许所有人访问登录接口
+                .antMatchers("/student/infomod").permitAll()
+                .antMatchers("/student/infotied").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .csrf().disable()
