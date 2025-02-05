@@ -1,4 +1,4 @@
-package org.example.baozi.recyclingbook.view;
+package org.example.baozi.recyclingbook.ResponseMessage;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -26,5 +26,8 @@ public class ResponseMessage<T> {
     }
     public static <T> ResponseMessage<T> info(String message) {
         return new ResponseMessage<T>(400, message, null);
+    }
+    public static <T> ResponseMessage<T> info(int code,String message) {
+        return new ResponseMessage<T>(code, message, null);
     }
 }

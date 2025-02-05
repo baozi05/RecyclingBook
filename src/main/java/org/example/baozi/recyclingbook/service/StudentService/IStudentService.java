@@ -1,9 +1,9 @@
-package org.example.baozi.recyclingbook.service;
+package org.example.baozi.recyclingbook.service.StudentService;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.baomidou.mybatisplus.extension.service.IService;
 import org.example.baozi.recyclingbook.model.DTO.StudentInfoDTO;
-import org.example.baozi.recyclingbook.model.DTO.StudentLoginDTO;
-import org.example.baozi.recyclingbook.model.Entity.Student;
+import org.example.baozi.recyclingbook.model.Entity.Student.Student;
 
 public interface IStudentService extends IService<Student> {
     /**
@@ -17,7 +17,7 @@ public interface IStudentService extends IService<Student> {
      * @param studentInfoDTO
      * @return
      */
-    Student updateStudentInfo(StudentInfoDTO studentInfoDTO);
+    void updateStudentInfo(StudentInfoDTO studentInfoDTO);
 
     /**
      * 验证密码

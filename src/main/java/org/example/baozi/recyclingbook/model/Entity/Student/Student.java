@@ -1,4 +1,4 @@
-package org.example.baozi.recyclingbook.model.Entity;
+package org.example.baozi.recyclingbook.model.Entity.Student;
 
 
 import com.baomidou.mybatisplus.annotation.IdType;
@@ -11,7 +11,7 @@ import lombok.Data;
 @TableName("student")
 public class Student {
 
-    @TableId(value = "student_id", type = IdType.NONE)
+    @TableId(value = "studentId", type = IdType.NONE)
     private String studentId; // 学号作为主键，数据库内已导入学号
 
     @TableField("password")
@@ -29,11 +29,11 @@ public class Student {
     @TableField("payment_method")
     private String paymentMethod; // 默认收款方式
 
-    @TableField("credit_score")
-    private Integer creditScore = 100; // 信誉分
+    @TableField("reputation_score")
+    private Integer reputationScore; // 信誉分
 
     @TableField("status")
-    private boolean status = true; // 状态 0:正常 1:限制使用
+    private boolean status; // 状态 0:正常 1:限制使用
 
     @TableField("is_first_login")
     private Boolean isFirstLogin = true; // 是否首次登录

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.baozi.recyclingbook.mapper.Admin.AdminMapper">
+    <update id="ChangeReputation" parameterType="org.example.baozi.recyclingbook.model.DTO.StudentRequestDTO">
+        UPDATE student
+        SET reputation_score = #{newScore},
+        status =
+        <if test="newScore &lt; 60">    <!--test 属性的条件表达式不能直接使用 < 或 > 等特殊字符。-->
+            false
+        </if>
+        <if test="newScore &gt;= 60">
+            true
+        </if>
+        WHERE studentId = #{studentId}
+    </update>
+
+</mapper>

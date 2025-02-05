@@ -15,6 +15,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/student/login").permitAll()  // 允许所有人访问登录接口
                 .antMatchers("/student/infomod").permitAll()
                 .antMatchers("/student/infotied").permitAll()
+                .antMatchers("/admin/getStudents").permitAll()
+                .antMatchers("/admin/delStudent").permitAll()
+                .antMatchers("/admin/reputation").permitAll()
+                .antMatchers("/admin/resetpassword").permitAll()
+                .antMatchers("/messages/send").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .csrf().disable()
